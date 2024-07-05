@@ -31,6 +31,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Install GitHub CLI
+        run: sudo apt-get install -y gh
+
+      - name: Set GH_TOKEN
+        run: echo "GH_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+
       - name: Check if event is an issue
         id: issue_check
         run: |
@@ -42,6 +48,8 @@ jobs:
 
       - name: Mark issue as stale
         if: env.is_issue_event == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Marking issue #${{ github.event.issue.number }} as stale"
           gh issue comment ${{ github.event.issue.number }} --body "This issue has been automatically marked as stale due to inactivity and will be closed in 7 days if no further activity occurs."
@@ -58,6 +66,7 @@ jobs:
           days-before-close: 1
           stale-issue-label: 'stale'
           exempt-issue-labels: 'do not stale, needs response'
+
 
 
 
