@@ -20,6 +20,7 @@
 
 name: Close Stale Issues
 on:
+  workflow_dispatch:
   issues:
     types: [opened, edited, reopened]
 
@@ -30,13 +31,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Check if event is an issue
+        id: issue_check
+        run: |
+          if [[ "${{ github.event.issue }}" == "" ]]; then
+            echo "This is not an issue event. Exiting."
+            exit 1
+          else
+            echo "This is an issue event."
+          fi
+
       - name: Run Stale Action on Issues
-        if: github.event.issue != null
+        if: steps.issue_check.outputs.is_issue_event == 'true'
         uses: actions/stale@v9
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           stale-issue-message: 'This issue has been automatically marked as stale due to inactivity and will be closed in 7 days if no further activity occurs.'
           close-issue-message: 'This issue was closed due to inactivity. Please reopen if you still encounter this problem or have more information to add.'
+          days-before-stale: 0
+          days-before-close: 1
           stale-issue-label: 'stale'
           exempt-issue-labels: 'do not stale, needs response'
-
