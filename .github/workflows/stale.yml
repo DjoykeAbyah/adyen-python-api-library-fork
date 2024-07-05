@@ -1,7 +1,7 @@
 name: Close Stale Issues
 on:
   schedule:
-    - cron: '30 8 * * *' #every 5 min for testing purposed
+    - cron: '30 8 * * *'
 
 jobs:
   stale:
@@ -14,8 +14,7 @@ jobs:
           close-issue-message: 'This issue was closed due to inactivity. Please reopen if you still encounter this problem or have more information to add.'
           days-before-issue-stale: 0
           day-before-issue-closed: 1
-          days-before-pr-stale: -1
-          day-before-pr-closed: -1
+          days-before-stale: 999
+          days-before-close: 999
           stale-issue-label: 'stale'
           exempt-issue-labels: 'do not stale, needs response'
-          only-issue-labels: 'do not stale, needs response'
