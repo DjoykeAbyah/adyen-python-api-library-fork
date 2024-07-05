@@ -34,13 +34,12 @@ jobs:
       - name: Check if event is an issue
         id: issue_check
         run: |
-          if [ "${{ github.event_name }}" == "issues" ]; then
+          if [ "${{ github.event.issue }}" != "" ]; then
             echo "This is an issue event."
             echo "::set-output name=is_issue_event::true"
           else
-            echo "This is not an issue event. Exiting."
+            echo "This is not an issue event."
             echo "::set-output name=is_issue_event::false"
-            exit 0
           fi
 
       - name: Run Stale Action on Issues
@@ -54,4 +53,6 @@ jobs:
           days-before-close: 1
           stale-issue-label: 'stale'
           exempt-issue-labels: 'do not stale, needs response'
+
+
 
