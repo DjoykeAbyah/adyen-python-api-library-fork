@@ -16,7 +16,5 @@ jobs:
           days-before-close: -1
           days-before-issue-stale: 0
           day-before-issue-closed: 1
-          days-before-pr-stale: -1
-          days-before-pr-close: -1
           stale-issue-label: 'stale'
           exempt-issue-labels: 'do not stale, needs response'
