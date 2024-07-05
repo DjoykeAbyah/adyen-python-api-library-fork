@@ -40,6 +40,13 @@ jobs:
             echo "is_issue_event=false" >> $GITHUB_ENV
           fi
 
+      - name: Mark issue as stale
+        if: env.is_issue_event == 'true'
+        run: |
+          echo "Marking issue #${{ github.event.issue.number }} as stale"
+          gh issue comment ${{ github.event.issue.number }} --body "This issue has been automatically marked as stale due to inactivity and will be closed in 7 days if no further activity occurs."
+          gh issue edit ${{ github.event.issue.number }} --add-label "stale"
+
       - name: Run Stale Action on Issues
         if: env.is_issue_event == 'true'
         uses: actions/stale@v9
