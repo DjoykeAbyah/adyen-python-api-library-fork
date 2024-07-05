@@ -18,3 +18,4 @@ jobs:
           day-before-issue-closed: 1
           stale-issue-label: 'stale'
           exempt-issue-labels: 'do not stale, needs response'
+          exempt-pr-labels: 'do not stale'
