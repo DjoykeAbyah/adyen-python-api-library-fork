@@ -1,7 +1,7 @@
 name: Close Stale Issues
 on:
   schedule:
-    - cron: '30 8 * * *'
+    - cron: '* * * * *'
 
 jobs:
   stale:
@@ -20,7 +20,7 @@ jobs:
           stale-issue-label: 'stale'
           exempt-issue-labels: 'do not stale, needs response'
           days-before-pr-stale: 365
-          days-before-pr-close: 30
+          days-before-pr-close: 31
           exempt-pr-labels: 'do not stale'
           only-pr-labels: awaiting-changes,blocked,work-in-progress,awaiting-upstream
           remove-pr-stale-when-updated: true
