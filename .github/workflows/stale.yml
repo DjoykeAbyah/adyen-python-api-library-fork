@@ -15,8 +15,8 @@ jobs:
           stale-pr-message: "This PR hasn't received any updates in a year and will be automatically closed in 30 days. Feel free to re-open if you plan to continue working on this pull request"
           days-before-stale: -1
           days-before-close: -1
-          days-before-issue-stale: 14
-          days-before-issue-close: 7
+          days-before-issue-stale: 0
+          days-before-issue-close: 1
           stale-issue-label: 'stale'
           exempt-issue-labels: 'do not stale, needs response'
           days-before-pr-stale: 365
