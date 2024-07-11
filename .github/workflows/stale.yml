@@ -1,7 +1,7 @@
 name: Close Stale Issues
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*30 8 * * *'
 
 jobs:
   stale:
@@ -15,12 +15,12 @@ jobs:
           stale-pr-message: "This PR hasn't received any updates in a year and will be automatically closed in 30 days. Feel free to re-open if you plan to continue working on this pull request"
           days-before-stale: -1
           days-before-close: -1
-          days-before-issue-stale: 0
-          days-before-issue-close: 1
+          days-before-issue-stale: 14
+          days-before-issue-close: 7
           stale-issue-label: 'stale'
           exempt-issue-labels: 'do not stale, needs response'
-          days-before-pr-stale: 0
-          days-before-pr-close: 1
+          days-before-pr-stale: 365
+          days-before-pr-close: 30
           exempt-pr-labels: 'do not stale'
           only-pr-labels: awaiting-changes,blocked,work-in-progress,awaiting-upstream
           remove-pr-stale-when-updated: true
