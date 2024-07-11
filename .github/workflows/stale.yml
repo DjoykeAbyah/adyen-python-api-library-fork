@@ -19,8 +19,8 @@ jobs:
           days-before-issue-close: 1
           stale-issue-label: 'stale'
           exempt-issue-labels: 'do not stale, needs response'
-          days-before-pr-stale: 1
-          days-before-pr-close: 0
+          days-before-pr-stale: 0
+          days-before-pr-close: 1
           exempt-pr-labels: 'do not stale'
           only-pr-labels: awaiting-changes,blocked,work-in-progress,awaiting-upstream
           remove-pr-stale-when-updated: true
